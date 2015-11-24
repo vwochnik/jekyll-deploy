@@ -29,9 +29,11 @@ deploy:
 - rsync -aze ssh --delete ./ example.com:www/                
 ```
 
-All commands are executed within the site's destination directory which is, by default, `_site` but can be changed with the `destination` configuration option.
+All commands are executed individually within the site's destination directory which is, by default, `_site` but can be changed with the `destination` configuration option.
 
-The `deploy` command supports the built-in `--config`, `--destination` and `--verbose` command line options.
+The `deploy` sub-command supports the built-in `--config`, `--destination` and `--verbose` command line options.
+
+Simply execute `jekyll deploy` after the site has been built with `jekyll build` or `jekyll serve`.
 
 # Contribute
 
