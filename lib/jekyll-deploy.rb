@@ -4,4 +4,4 @@ module Jekyll
   end
 end
 
-require 'jekyll/deploy.rb'
+require 'jekyll/commands/deploy.rb'

@@ -1,8 +1,8 @@
-# Jekyll Email Protect [![Gem Version](https://badge.fury.io/rb/jekyll-email-protect.png)](http://badge.fury.io/rb/jekyll-email-protect)
+# Jekyll Deploy [![Gem Version](https://badge.fury.io/rb/jekyll-deploy.png)](http://badge.fury.io/rb/jekyll-deploy)
 
-> Email protection liquid filter for Jekyll
+> Jekyll 3.0-compatible deploy plugin
 
-Jekyll Email Protect is an email protection liquid filter which can be used to obfuscate `mailto:` links to protect an email address from span bots.
+Jekyll Deploy is a Jekyll plugin which adds a `deploy` sub-command to the `jekyll` executable which allows deploy commands to be executed quickly.
 
 ## Installation
 
@@ -11,41 +11,27 @@ This plugin is available as a [RubyGem][ruby-gem].
 Add this line to your application's `Gemfile`:
 
 ```
-gem 'jekyll-email-protect'
+group :jekyll_plugins do
+  gem 'jekyll-deploy'
+end
 ```
 
 And then execute the `bundle` command to install the gem.
 
-Alternatively, you can also manually install the gem using the following command:
+After the plugin has been installed successfully, the `deploy` sub-command is available for use.
+
+# Configuration
+
+The `deploy` command executes all commands specified in the `deploy` array inside the site's configuration file as the following example demonstrates:
 
 ```
-$ gem install jekyll-email-protect
+deploy:
+- rsync -aze ssh --delete ./ example.com:www/                
 ```
 
-After the plugin has been installed successfully, add the following lines to your `_config.yml` in order to tell Jekyll to use the plugin:
+All commands are executed within the site's destination directory which is, by default, `_site` but can be changed with the `destination` configuration option.
 
-```
-gems:
-- jekyll-email-protect
-```
-
-## Getting Started
-
-In your markup, simply use the `protect_email` liquid filter made available through this plugin:
-
-```
-{{ 'example@example.com' | encode_email }}
-```
-
-The above code will yield `%65%78%61%6D%70%6C%65@%65%78%61%6D%70%6C%65.%63%6F%6D`. Only use this filter within the `href` attribute of a given link.
-
-## Example
-
-The following example shows how this plugin can be used to protect the `site`'s email address:
-
-```
-<a href="mailto:{{ site.email | protect_email }}" title="Contact me">Contact me</a>
-```
+The `deploy` command supports the built-in `--config`, `--destination` and `--verbose` command line options.
 
 # Contribute
 
@@ -57,4 +43,4 @@ Copyright (c) 2015 Vincent Wochnik.
 
 License: MIT
 
-[ruby-gem]: https://rubygems.org/gems/jekyll-language-plugin
+[ruby-gem]: https://rubygems.org/gems/jekyll-deploy
