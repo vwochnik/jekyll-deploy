@@ -10,7 +10,7 @@ This plugin is available as a [RubyGem][ruby-gem].
 
 Add this line to your application's `Gemfile`:
 
-```
+```ruby
 group :jekyll_plugins do
   gem 'jekyll-deploy'
 end
@@ -24,7 +24,7 @@ After the plugin has been installed successfully, the `deploy` sub-command is av
 
 The `deploy` command executes all commands specified in the `deploy` array inside the site's configuration file as the following example demonstrates:
 
-```
+```yaml
 deploy:
 - rsync -aze ssh --delete ./ example.com:www/                
 ```
