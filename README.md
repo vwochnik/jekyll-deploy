@@ -26,7 +26,7 @@ The `deploy` command executes all commands specified in the `deploy` array insid
 
 ```yaml
 deploy:
-- rsync -aze ssh --delete ./ example.com:www/                
+  - rsync -aze ssh --delete ./ example.com:www/                
 ```
 
 All commands are executed individually within the site's destination directory which is, by default, `_site` but can be changed with the `destination` configuration option.
